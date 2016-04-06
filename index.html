@@ -47,11 +47,11 @@
 
 		#tsa {
 			font-size: 144px;
-			margin: 50px 0px 50px;
+			margin: 40px 0px 40px;
 			text-align: center;
 		}
 
-		#blue-toad {
+		#tsa-logo {
 			margin-top:50px;
 			display: block;
 			margin-left: auto;
@@ -63,7 +63,7 @@
 </head>
 
 <body>
-	<img src="http://i.imgur.com/1OJROiF.png" width="173" height="240" id="blue-toad">
+	<img src="//upload.wikimedia.org/wikipedia/commons/thumb/2/2c/US-TransportationSecurityAdmin-DOTSeal.svg/2000px-US-TransportationSecurityAdmin-DOTSeal.svg.png" height="300px" id="tsa-logo">
 	<h1 id="tsa" class="center">TSA Clone</h1>
 	<p class="center">Coded with <3 by Olivia Chang. Click anywhere to use this stupid clone of the TSA app.</p>
 
@@ -72,7 +72,6 @@
 		// So the next +180 makes it face left.
 		// If k is currently at 0, then the toad is facing right.
 		// If k is currently at 180, then the toad is facing left.
-		var k = 0;
 		function onClick() {
 			// Get random # between 1 and 2 inclusive
 			random_number = Math.floor((Math.random() * 2) + 1);
@@ -80,28 +79,11 @@
 		  // Check if user is supposed to go to the next level
 		  if (random_number == 1) {
 		    document.getElementById("tsa").innerHTML = "Right";
-		    
-		    var j = document.getElementById("blue-toad");
-
-		    if (k != 0) { // If the toad is currently facing right
-		    	k += 180; // Have it do a 180 turn, now facing right.
-		    	j.style.transform = "rotatey(" + k + "deg)";
-		    	j.style.transitionDuration = "0.5s"
-		    }
-		    
-		    k = 0
+		    document.getElementById("tsa-logo").src="//vignette3.wikia.nocookie.net/trollpasta/images/3/34/Blue_Toad_SM3DW.png/revision/latest?cb=20131108025611";
 
 		  } else {
 		  	document.getElementById("tsa").innerHTML = "Left";
-		  	
-		  	var j = document.getElementById("blue-toad");
-		    if (k != 180) { // If the toad is currently facing left
-		    	k += 180; // Do a 180 turn to face left.
-		    	j.style.transform = "rotatey(" + k + "deg)";
-		    	j.style.transitionDuration = "0.5s"
-		    }
-		    
-		    k = 180
+		  	document.getElementById("tsa-logo").src="//i.imgur.com/o4MGHRG.png";
 		  }
 
 		  setTimeout(function () {
