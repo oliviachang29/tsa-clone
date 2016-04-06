@@ -1,0 +1,121 @@
+<!doctype html>
+<html onClick="onClick()" class="noselect">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<style>
+		/* Reset */
+		html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0} 
+		*, *:before, *:after { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+		body {
+			font:16px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
+			-webkit-font-smoothing: antialiased;
+			text-rendering: optimizeLegibility;
+			color: #777;
+		}
+
+		p {
+			line-height:1.8;
+		}
+
+		strong {
+			font-weight: 500;
+			color: #333;
+		}
+
+		a {
+			text-decoration: none;
+		}
+
+		.center {
+		  margin: 0 0 auto;
+		  text-align: center;
+		}
+
+		.noselect {
+		  -webkit-touch-callout: none; /* iOS Safari */
+		  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+		  -khtml-user-select: none;    /* Konqueror */
+		  -moz-user-select: none;      /* Firefox */
+		  -ms-user-select: none;       /* IE/Edge */
+		}
+
+
+		#tsa {
+			font-size: 144px;
+			margin: 50px 0px 50px;
+			text-align: center;
+		}
+
+		#blue-toad {
+			margin-top:50px;
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+		}
+	</style>
+
+	<title>TSA Clone</title>
+</head>
+
+<body>
+	<img src="{% static '/images/blue-toad.png' %}" width="173" height="240" id="blue-toad">
+	<h1 id="tsa" class="center">TSA Clone</h1>
+	<p class="center">Coded with <3 by Olivia Chang. Click anywhere to use this stupid clone of the TSA app.</p>
+
+	<script>
+		// Initally the toad faces right.
+		// So the next +180 makes it face left.
+		// If k is currently at 0, then the toad is facing right.
+		// If k is currently at 180, then the toad is facing left.
+		var k = 0;
+		function onClick() {
+			// Get random # between 1 and 2 inclusive
+			random_number = Math.floor((Math.random() * 2) + 1);
+
+		  // Check if user is supposed to go to the next level
+		  if (random_number == 1) {
+		    document.getElementById("tsa").innerHTML = "Right";
+		    
+		    var j = document.getElementById("blue-toad");
+
+		    if (k != 0) { // If the toad is currently facing right
+		    	k += 180; // Have it do a 180 turn, now facing right.
+		    	j.style.transform = "rotatey(" + k + "deg)";
+		    	j.style.transitionDuration = "0.5s"
+		    }
+		    
+		    k = 0
+
+		  } else {
+		  	document.getElementById("tsa").innerHTML = "Left";
+		  	
+		  	var j = document.getElementById("blue-toad");
+		    if (k != 180) { // If the toad is currently facing left
+		    	k += 180; // Do a 180 turn to face left.
+		    	j.style.transform = "rotatey(" + k + "deg)";
+		    	j.style.transitionDuration = "0.5s"
+		    }
+		    
+		    k = 180
+		  }
+
+		  setTimeout(function () {
+	        document.getElementById("tsa").innerHTML = "Click again";
+	    }, 1000);
+
+
+		 }
+	 </script>
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="{% static '/js/main.js' %}"></script>
+
+	</body>
+</html>
+
+
